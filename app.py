@@ -11,17 +11,26 @@ from tensorflow.keras.models import load_model
 FILE_ID = "1Co4mQYE3Z1bEmoXCKi9R29tzS5RdbNkL"
 ZIP_OUTPUT = "mask_final.zip"
 MODEL_DIR = "model_dir"
-MODEL_PATH = os.path.join(MODEL_DIR,"mask_final.zip", "mask_final.keras")
 
 # Download zip if not exists
 if not os.path.exists(ZIP_OUTPUT):
     url = f"https://drive.google.com/uc?id={FILE_ID}"
     gdown.download(url, ZIP_OUTPUT, quiet=False)
 
-# Extract zip if model not already extracted
-if not os.path.exists(MODEL_PATH):
-    with zipfile.ZipFile(ZIP_OUTPUT, 'r') as zip_ref:
-        zip_ref.extractall(MODEL_DIR)
+# Extract zip if not already extracted
+with zipfile.ZipFile(ZIP_OUTPUT, 'r') as zip_ref:
+    zip_ref.extractall(MODEL_DIR)
+
+# Auto-detect keras file inside extracted folder
+MODEL_PATH = None
+for root, dirs, files in os.walk(MODEL_DIR):
+    for f in files:
+        if f.endswith(".keras"):
+            MODEL_PATH = os.path.join(root, f)
+            break
+
+if MODEL_PATH is None:
+    raise FileNotFoundError("mask_final.keras not found in extracted zip")
 
 # Load model
 model = load_model(MODEL_PATH)
