@@ -11,7 +11,7 @@ from tensorflow.keras.models import load_model
 FILE_ID = "1Co4mQYE3Z1bEmoXCKi9R29tzS5RdbNkL"
 ZIP_OUTPUT = "mask_final.zip"
 MODEL_DIR = "model_dir"
-MODEL_PATH = os.path.join(MODEL_DIR, "mask_final.keras")
+MODEL_PATH = os.path.join(MODEL_DIR, "mask_final", "mask_final.keras")
 
 # Download zip if not exists
 if not os.path.exists(ZIP_OUTPUT):
