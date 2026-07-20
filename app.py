@@ -8,7 +8,7 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 
 # Google Drive file ID (mask_final.zip मध्ये तुझं model आहे)
-FILE_ID = "1vnTs1tIa-LLU6m6ONz71fToF8x7uM96y"
+FILE_ID = "1Co4mQYE3Z1bEmoXCKi9R29tzS5RdbNkL"
 ZIP_OUTPUT = "mask_final.zip"
 MODEL_DIR = "model_dir"
 MODEL_PATH = os.path.join(MODEL_DIR, "mask_final.keras")
