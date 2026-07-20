@@ -2,5 +2,7 @@ streamlit
 numpy
 pandas
 scikit-learn
-xgboost
 scipy
+tensorflow
+gdown
+pillow
